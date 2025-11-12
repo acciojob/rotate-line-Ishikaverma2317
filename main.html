@@ -3,11 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Continuous Line Rotation</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Center the line on the screen */
+    #line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 2px;
+      background-color: #000000;
+      transform-origin: center;
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+  </style>
 </head>
 <body>
   <div id="line"></div>
 
-  <script src="script.js"></script>
+  <script>
+    // Select the line element
+    const line = document.getElementById('line');
+
+    // Initialize rotation angle
+    let angle = 0;
+
+    // Update rotation every 20 milliseconds
+    setInterval(() => {
+      angle = (angle + 2) % 360; // keep angle within 0–359 range
+      line.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+    }, 20);
+  </script>
 </body>
 </html>
